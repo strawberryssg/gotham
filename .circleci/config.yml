@@ -137,8 +137,14 @@ jobs:
           name: "Build Snapshot or Release"
           command: |
             if [[ $CIRCLE_TAG == "" ]]; then
+              echo "==================="
+              echo "This is just a snapshot"
+              echo "==================="
               goreleaser build --config=.goreleaser.yml --skip-validate --rm-dist
             else
+              echo "==================="
+              echo "This is a release"
+              echo "==================="
               goreleaser release --config=.goreleaser.yml
             fi
 
